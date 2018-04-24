@@ -1,7 +1,8 @@
 # DartThemes framework
 Create WordPress Theme in a minute, almost ready to publish on wordpress.org and theme check passed. We created this theme by action hook in all pages, so you can extend/filter any part of the page like header, footer, content area, sidebar and etc. you don't need to edit core files for customization, there are ton of action hooks for adding your own content/HTML by conditionally in any pages via action and filter hooks.
 
-** DartThemes framework by** [DartThemes.com](https://dartthemes.com)
+### DartThemes framework by [DartThemes.com](https://dartthemes.com)
+**Live Demo** [http://dartthemes.com/demo/dartthemes-framework/](http://dartthemes.com/demo/dartthemes-framework/)
 
 
 # Customizer Support
