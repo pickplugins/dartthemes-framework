@@ -1,0 +1,147 @@
+
+/* === Comments === */
+#comments .media{
+    border-bottom: 1px solid #F5F2F2;
+}
+#comments .comment-avartar {
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 60px;
+    float: left;
+    margin-right: 20px;
+}
+
+.comment-avarta{}
+
+#comments .comment-avartar img {
+    width: 100%;
+}
+
+
+#respond input[type="text"],
+#respond input[type="email"],
+#respond input[type="url"] {
+    display: block;
+    width: 100%;
+    height: 43px;
+    border: 1px solid #f2f2f2;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    color: #888888;
+    border-radius: 0;
+}
+
+#respond input:focus[type="text"],
+#respond input:focus[type="email"],
+#respond input:focus[type="url"],
+#respond textarea:focus {
+    outline: none;
+    border-color: #007dff;
+}
+
+#respond textarea {
+    display: block;
+    width: 100%;
+    height: 180px;
+    border: 1px solid #f2f2f2;
+    margin-bottom: 30px;
+    resize: none;
+    padding: 10px 15px;
+    background: #fff;
+    border-radius: 0;
+}
+
+#respond .form-submit{
+    font-size: 12px;
+}
+
+#respond .logged-in-as{
+    margin-left: 15px;
+}
+
+#respond #reply-title{
+    padding-bottom: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+#respond #reply-title small a{
+    color: #FD3535;
+    margin-left: 10px;
+}
+
+#comments .common-title.comments-title{
+    padding-bottom: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+#comments ul.comment-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#comments ul.comment-list ul{
+    list-style: none;
+    padding-left: 30px;
+}
+
+#comments .comment-reply{
+
+}
+
+#comments .comment-reply a{
+
+}
+
+#comments .comment-meta {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+#comments .comment-reply a:hover{
+
+}
+
+#comments .comment-author{
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: .30px;
+}
+
+#comments .comment-author a,
+#respond .logged-in-as a{
+    color: #000;
+    font-weight: 700;
+}
+
+#comments .comment-author a:hover,
+#respond .logged-in-as a:hover{
+    color: #007dff;
+}
+
+#comments .comment-date{
+    color: #9e9e9e;
+    font-size: 12px;
+}
+
+#comments .comment-content{
+    margin-top: 10px;
+}
+
+#comments .comment-content p{
+    margin-bottom: 10px;
+}
+
+#comments .comment-body{
+    margin-bottom: 15px;
+}

@@ -1,0 +1,16 @@
+.site-header {
+    border-bottom: 1px solid #ddd;
+}
+
+.site-header .main-logo {
+    padding: 15px;
+}
+
+.site-header .navigation {
+
+}
+
+
+.site-header .navigation .menu li {
+    float: right;
+}
