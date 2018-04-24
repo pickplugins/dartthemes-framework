@@ -45,3 +45,8 @@ We have added some ready widget on this so you can run the test on it.
     * style-widgets.css
 * tag.php
 * taxonomy-custom_tax_name.php
+
+
+# Screenshots
+
+[![Screenshot](https://github.com/pickplugins/dartthemes-framework/blob/master/dartthemes-framework.png)](https://github.com/pickplugins/dartthemes-framework/blob/master/dartthemes-framework.png)
