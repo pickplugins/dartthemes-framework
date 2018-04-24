@@ -13,12 +13,9 @@ Text Domain: dart-framework
 
 @import "style-header.css";
 @import "style-menu.css";
-
 @import "style-content.css";
-
 @import "style-widgets.css";
 @import "style-comments.css";
-
 @import "style-pagination.css";
 @import "style-footer.css";
 

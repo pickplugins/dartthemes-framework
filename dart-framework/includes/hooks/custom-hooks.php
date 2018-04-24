@@ -265,7 +265,9 @@ function dartthemes_fw_singular_post_html(){
             </div>
             <div class="entry-content">
 			    <?php the_content(); ?>
+
             </div>
+            <div class="clearfix"></div>
             <div class="entry-meta-bottom">
                 <div class="entry-tags text-left"><?php the_tags(); ?></div>
             </div>
@@ -329,6 +331,7 @@ function dartthemes_fw_archive_loop_post_comments_html(){
 
 	if ( comments_open() || get_comments_number() ) :
         comments_template();
+
     endif;
 
 }
