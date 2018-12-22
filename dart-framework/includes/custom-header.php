@@ -12,27 +12,27 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses dartthemes_fw_header_style()
+ * @uses PickPlugins_header_style()
  */
-function dartthemes_fw_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'dartthemes_fw_custom_header_args', array(
+function PickPlugins_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'PickPlugins_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1980,
 		'height'                 => 960,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'dartthemes_fw_header_style',
+		'wp-head-callback'       => 'PickPlugins_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'dartthemes_fw_custom_header_setup' );
+add_action( 'after_setup_theme', 'PickPlugins_custom_header_setup' );
 
-if ( ! function_exists( 'dartthemes_fw_header_style' ) ) :
+if ( ! function_exists( 'PickPlugins_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog
 	 *
-	 * @see dartthemes_fw_custom_header_setup().
+	 * @see PickPlugins_custom_header_setup().
 	 */
-	function dartthemes_fw_header_style() {
+	function PickPlugins_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		
@@ -62,4 +62,4 @@ if ( ! function_exists( 'dartthemes_fw_header_style' ) ) :
         </style>
 		<?php
 	}
-endif; // dartthemes_fw_header_style
+endif; // PickPlugins_header_style

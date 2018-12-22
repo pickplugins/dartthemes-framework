@@ -4,11 +4,11 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-add_action( 'widgets_init', 'dartthemes_fw_widgets_init' );
+add_action( 'widgets_init', 'PickPlugins_widgets_init' );
 
-function dartthemes_fw_widgets_init(){
+function PickPlugins_widgets_init(){
 
-	$dartthemes_fw_sidebars[] = array(
+	$PickPlugins_sidebars[] = array(
 		'name'          => __( 'Blog Sidebar', 'dart-framework' ),
 		'id'            => 'blog-widget',
 		'description'   => '',
@@ -18,7 +18,7 @@ function dartthemes_fw_widgets_init(){
 		'after_widget'  => '</div></aside>',
 	);
 
-	$dartthemes_fw_sidebars[] = array(
+	$PickPlugins_sidebars[] = array(
 		'name'          => __( 'Footer', 'dart-framework' ),
 		'id'            => 'footer-widget',
 		'description'   => '',
@@ -33,10 +33,10 @@ function dartthemes_fw_widgets_init(){
 
 
 
-	$dartthemes_fw_sidebars = apply_filters('dartthemes_fw_sidebars', $dartthemes_fw_sidebars);
+	$PickPlugins_sidebars = apply_filters('PickPlugins_sidebars', $PickPlugins_sidebars);
 
 
-	foreach ($dartthemes_fw_sidebars as $sidebar){
+	foreach ($PickPlugins_sidebars as $sidebar){
 
 		register_sidebar($sidebar);
 

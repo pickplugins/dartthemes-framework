@@ -3,8 +3,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-add_action('dartthemes_fw_site_main_top','dartthemes_fw_site_main_top_container');
-function dartthemes_fw_site_main_top_container(){
+add_action('PickPlugins_site_main_top','PickPlugins_site_main_top_container');
+function PickPlugins_site_main_top_container(){
 
 	?>
     <div class="container">
@@ -15,9 +15,9 @@ function dartthemes_fw_site_main_top_container(){
 
 
 
-add_action('dartthemes_fw_site_main_bottom','dartthemes_fw_site_main_bottom_container');
+add_action('PickPlugins_site_main_bottom','PickPlugins_site_main_bottom_container');
 
-function dartthemes_fw_site_main_bottom_container(){
+function PickPlugins_site_main_bottom_container(){
 
 	?>
             </div> <!-- .col-md-8 -->
@@ -53,8 +53,8 @@ function dartthemes_fw_site_main_bottom_container(){
 
 
 
-add_action('dartthemes_fw_content_area_top','dartthemes_fw_arcive_title');
-function dartthemes_fw_arcive_title(){
+add_action('PickPlugins_content_area_top','PickPlugins_arcive_title');
+function PickPlugins_arcive_title(){
 
 	if(is_category() || is_tag() || is_author() || is_year() || is_month() || is_day() || is_tax() || is_post_type_archive()):
 		?>
@@ -99,89 +99,120 @@ function dartthemes_fw_arcive_title(){
 
 
 
-add_action('dartthemes_fw_site_header','dartthemes_fw_site_header_html');
-function dartthemes_fw_site_header_html(){
+add_action('PickPlugins_site_header','PickPlugins_site_header_html');
+function PickPlugins_site_header_html(){
 
-	$header_template = get_theme_mod('header_theme');
+    $PickPlugins_logo = get_theme_mod('PickPlugins_logo');
+    ?>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <?php
+                if(!empty($PickPlugins_logo)):
+                    ?>
+                    <div class="main-logo">
+                        <a href="<?php echo esc_url(home_url()); ?>"><img src="<?php echo esc_url(get_theme_mod('PickPlugins_logo'));
+                            ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>"></a>
+                    </div><!-- /Logo -->
+                <?php
+                else:
+                    ?>
+                    <div class="main-logo">
+                        <h1><a href="<?php echo esc_url(home_url()); ?>"><?php echo esc_attr(get_bloginfo('name')); ?></a></h1>
+                    </div><!-- /Logo -->
+                <?php
 
-	if(empty($header_template)){
-		$header_template =  'header_1';
-	}
+                endif;
+                ?>
+            </div>
+            <div class="col-md-9">
+                <div id="" class="navigation">
+                    <?php wp_nav_menu( array('container' => false, 'theme_location' => 'header-menu', 'menu_class' => 'menu float-right')); ?>
+                </div>
+                <div class="menu-mobile"></div>
+            </div>
 
-	if($header_template=='header_1'){
-		get_template_part('templates-parts/header-templates/header','template-1');
-	}
+        </div>
+    </div>
 
-}
-
-
-add_filter('dartthemes_fw_site_header_class','dartthemes_fw_site_header_class_extra');
-function dartthemes_fw_site_header_class_extra($header_class){
-
-	$header_template = get_theme_mod('header_theme');
-
-	if(empty($header_template)){
-
-		$header_template =  'header_1';
-	}
-
-	return $header_template.' '.$header_class;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-add_filter('dartthemes_fw_site_footer_class', 'dartthemes_fw_site_footer_class_extra');
-
-function dartthemes_fw_site_footer_class_extra($footer_class){
-	$footer_template = get_theme_mod('footer_theme');
-	if(empty($footer_template)){
-		$footer_template =  'footer_1';
-	}
-	return $footer_template.' '.$footer_class;
-}
-
-
-add_action('dartthemes_fw_site_footer','dartthemes_fw_site_footer_html');
-function dartthemes_fw_site_footer_html(){
-
-	$footer_template = get_theme_mod('footer_theme');
-	if(empty($footer_template)){
-		$footer_template =  'footer_1';
-	}
-
-	if($footer_template=='footer_1'){
-		get_template_part('templates-parts/footer-templates/footer','template-1');
-	}
+    <?php
 
 }
 
 
-add_filter('dartthemes_fw_article_class','dartthemes_fw_article_class_extra');
 
-function dartthemes_fw_article_class_extra($article_class){
 
-	$article_template = get_theme_mod('article_theme');
 
-	if(empty($article_template)){
+add_action('PickPlugins_site_footer','PickPlugins_site_footer_html');
+function PickPlugins_site_footer_html(){
 
-		$article_template = '';
-	}
-	return $article_template.' '. $article_class;
+    ?>
+
+
+    <div class="container">
+        <div class="row">
+
+            <?php dynamic_sidebar('footer-widget'); ?>
+
+
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+
+        <div class="container">
+            <div class="row">
+
+                <?php
+
+                $PickPlugins_poweredby = get_theme_mod('PickPlugins_poweredby');
+                $PickPlugins_dev_by = get_theme_mod('PickPlugins_dev_by');
+
+                $PickPlugins_copyright_text = get_theme_mod('PickPlugins_copyright_text');
+
+                ?>
+
+                <div class="col-md-12">
+                    <?php if(empty($PickPlugins_poweredby)):?>
+                        <span class="poweredby"><?php echo __('Proudly powered by <b>WordPress</b>','dart-framework'); ?></span> |
+                    <?php
+                    endif;
+                    ?>
+
+                    <?php if(empty($PickPlugins_dev_by)):?>
+                        <span class="dev-credit"><?php echo sprintf(__('Theme <b>Dart framework</b> by <a href="%s">%s</a>','dart-framework'),'https://dartthemes.com','https://dartthemes.com'); ?>  </span> |
+                    <?php
+                    endif;
+                    ?>
+
+
+                    <?php if(empty($PickPlugins_copyright_text)):?>
+                        <span class="footer-copyright"><?php echo sprintf(__('Copyright %s %s','dart-framework'), date('Y'), esc_url( home_url() )); ?></span>
+                    <?php
+                    else:
+                        ?>
+                        <span class="footer-copyright"><?php echo esc_html($PickPlugins_copyright_text); ?></span>
+                    <?php
+
+                    endif;
+                    ?>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <?php
+
+
 }
 
 
 
-add_action('dartthemes_fw_content_area_bottom','dartthemes_fw_content_area_bottom_pagination');
-function dartthemes_fw_content_area_bottom_pagination(){
+
+
+add_action('PickPlugins_content_area_bottom','PickPlugins_content_area_bottom_pagination');
+function PickPlugins_content_area_bottom_pagination(){
 
 	if(!is_singular()):
 
@@ -230,8 +261,8 @@ function dartthemes_fw_content_area_bottom_pagination(){
 }
 
 
-add_action('dartthemes_fw_archive_loop_post','dartthemes_fw_singular_post_html');
-function dartthemes_fw_singular_post_html(){
+add_action('PickPlugins_archive_loop_post','PickPlugins_singular_post_html');
+function PickPlugins_singular_post_html(){
 
     if(is_singular()):
 
@@ -239,7 +270,7 @@ function dartthemes_fw_singular_post_html(){
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <div class="entry-thumbnail">
-			    <?php the_post_thumbnail(); ?>
+			    <?php //the_post_thumbnail(); ?>
             </div>
             <h1 class="title entry-title">
 	            <?php the_title(); ?>
@@ -290,20 +321,8 @@ function dartthemes_fw_singular_post_html(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-add_action('dartthemes_fw_archive_loop_post','dartthemes_fw_archive_loop_post_nav_html');
-function dartthemes_fw_archive_loop_post_nav_html(){
+add_action('PickPlugins_archive_loop_post','PickPlugins_archive_loop_post_nav_html');
+function PickPlugins_archive_loop_post_nav_html(){
 
 	if(is_singular()):
 		?>
@@ -326,8 +345,8 @@ function dartthemes_fw_archive_loop_post_nav_html(){
 
 
 
-add_action('dartthemes_fw_archive_loop_post','dartthemes_fw_archive_loop_post_comments_html');
-function dartthemes_fw_archive_loop_post_comments_html(){
+add_action('PickPlugins_archive_loop_post','PickPlugins_archive_loop_post_comments_html');
+function PickPlugins_archive_loop_post_comments_html(){
 
 	if ( comments_open() || get_comments_number() ) :
         comments_template();
@@ -344,41 +363,101 @@ function dartthemes_fw_archive_loop_post_comments_html(){
 
 
 
-add_action('dartthemes_fw_archive_loop_post','dartthemes_fw_archive_loop_post_html');
-function dartthemes_fw_archive_loop_post_html(){
+add_action('PickPlugins_archive_loop_post','PickPlugins_archive_loop_post_html');
+function PickPlugins_archive_loop_post_html(){
 
-	if(is_archive() || is_home()):
 
-		?>
+
+}
+
+
+
+
+
+
+add_action('PickPlugins_content_area','PickPlugins_content_area_html');
+function PickPlugins_content_area_html(){
+
+    if(is_singular()):
+        while ( have_posts() ) : the_post();
+        ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <div class="entry-thumbnail">
-				<?php the_post_thumbnail(); ?>
+                <?php //the_post_thumbnail(); ?>
+            </div>
+            <h1 class="title entry-title">
+                <?php the_title(); ?>
+
+            </h1>
+
+            <div class="entry-meta-top">
+                <div class="author vcard">
+                    <?php _e('By: ', 'bug-blog');
+                    printf('<a class="url fn n" href="%1$s">%2$s</a>',
+                        esc_url(get_author_posts_url(get_the_author_meta('ID'))),
+                        esc_html(get_the_author())
+                    ) ?>
+                </div>
+                <div class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></div>
+                <?php if (get_the_category_list()): ?>
+
+                    <div class="categories">
+                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+            <div class="entry-content">
+                <?php the_content(); ?>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="entry-meta-bottom">
+                <div class="entry-tags text-left"><?php the_tags(); ?></div>
+            </div>
+
+
+
+        </article>
+
+    <?php
+
+        endwhile;
+    endif;
+
+    if(is_archive() || is_home()):
+        while ( have_posts() ) : the_post();
+        ?>
+
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <div class="entry-thumbnail">
+                <?php //the_post_thumbnail(); ?>
             </div>
             <h2 class="title entry-title">
-				<a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
+                <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
 
             </h2>
 
             <div class="entry-meta-top">
                 <div class="author vcard">
-					<?php _e('By: ', 'bug-blog');
-					printf('<a class="url fn n" href="%1$s">%2$s</a>',
-						esc_url(get_author_posts_url(get_the_author_meta('ID'))),
-						esc_html(get_the_author())
-					) ?>
+                    <?php _e('By: ', 'bug-blog');
+                    printf('<a class="url fn n" href="%1$s">%2$s</a>',
+                        esc_url(get_author_posts_url(get_the_author_meta('ID'))),
+                        esc_html(get_the_author())
+                    ) ?>
                 </div>
                 <div class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></div>
-				<?php if (get_the_category_list()): ?>
+                <?php if (get_the_category_list()): ?>
 
                     <div class="categories">
-						<?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
+                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
                     </div>
-				<?php endif; ?>
+                <?php endif; ?>
 
             </div>
             <div class="entry-content">
-				<?php echo wp_trim_words(get_the_excerpt(), 30, ''); ?>
+                <?php echo wp_trim_words(get_the_excerpt(), 30, ''); ?>
 
                 <a class="read-more " href="">Read more</a>
             </div>
@@ -388,18 +467,12 @@ function dartthemes_fw_archive_loop_post_html(){
 
         </article>
 
-		<?php
+    <?php
+        endwhile;
 
-
-	endif;
+    endif;
 
 }
-
-
-
-
-
-
 
 
 

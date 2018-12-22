@@ -3,14 +3,7 @@
 'use strict';
 
 
-/* === Preloader === */
 
-  (function () {
-      $(window).load(function() {
-          $('#pre-status').fadeOut();
-          $('#st-preloader').delay(350).fadeOut('slow');
-      });
-  }());
 
 
 /* === Back To Top === */
@@ -41,12 +34,7 @@
     })
   }());
 
-/* === Fitvids js === */
-  (function () {
-      $(".wpb_wrapper").fitVids();
-      $(".entry-content").fitVids();
-      $(".entry-video").fitVids();
-  }()); 
+
 
 	
 });

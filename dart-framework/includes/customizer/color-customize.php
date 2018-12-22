@@ -2,9 +2,9 @@
 
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
-if ( ! function_exists( 'dartthemes_fw_color_theme' ) ) :
+if ( ! function_exists( 'PickPlugins_color_theme' ) ) :
 
-function dartthemes_fw_color_theme(){
+function PickPlugins_color_theme(){
 
 	$site_header_bg_color = get_theme_mod('site_header_bg_color');
 	$site_header_text_color = get_theme_mod('site_header_text_color');
@@ -97,6 +97,6 @@ function dartthemes_fw_color_theme(){
 	</style>
 <?php
 }
-add_action('wp_head', 'dartthemes_fw_color_theme');
+add_action('wp_head', 'PickPlugins_color_theme');
 
 endif;

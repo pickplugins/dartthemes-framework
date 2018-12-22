@@ -20,7 +20,7 @@ if ( post_password_required() )
                 wp_list_comments( array(
                     'style'       => 'ul',
                     'short_ping'  => true,
-                    'callback' => 'dartthemes_fw_comment',
+                    'callback' => 'PickPlugins_comment',
                     'avatar_size' => 75
                 ) );
             ?>

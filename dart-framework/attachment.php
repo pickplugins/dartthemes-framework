@@ -15,9 +15,7 @@ get_header();
 
 			<?php dartthemes_fw_content_area_top(); ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php dartthemes_fw_archive_loop_post(); ?>
-			<?php endwhile; ?>
+            <?php dartthemes_fw_content_area(); ?>
 
 			<?php dartthemes_fw_content_area_bottom(); ?>
         </div> <!-- .content-area end -->

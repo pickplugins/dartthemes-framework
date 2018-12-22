@@ -11,7 +11,7 @@ if( class_exists( 'WP_Customize_Control' ) ):
 
 		    //var_dump($this->link());
 
-		    $dartthemes_fw_social_links = dartthemes_fw_social_links();
+		    $PickPlugins_social_links = PickPlugins_social_links();
 
 			?>
             <div class="social-links">
@@ -20,7 +20,7 @@ if( class_exists( 'WP_Customize_Control' ) ):
 
 	            <?php
 
-	            foreach ($dartthemes_fw_social_links as $link){
+	            foreach ($PickPlugins_social_links as $link){
 
 		            ?>
                     <div class="item">
@@ -44,34 +44,34 @@ endif;
 
 
 
-Kirki::add_panel( 'dartthemes_fw_contact', array(
+Kirki::add_panel( 'PickPlugins_contact', array(
 	'priority'    => 10,
 	'title'       => __( 'Contact & Social', 'dart-framework' ),
 	//'description' => __( '', 'dart-framework' ),
 ) );;
 
 
-Kirki::add_section( 'dartthemes_fw_social', array(
+Kirki::add_section( 'PickPlugins_social', array(
 	'title'          => __( 'Social Profile Links', 'dart-framework' ),
 	'description'    => __( 'Social media site profile links.', 'dart-framework' ),
-	'panel'          => 'dartthemes_fw_contact', // Not typically needed.
+	'panel'          => 'PickPlugins_contact', // Not typically needed.
 	'priority'       => 160,
 	'capability'     => 'edit_theme_options',
 	'theme_supports' => '', // Rarely needed.
 ) );
 
 
-Kirki::add_field( 'dartthemes_fw_social_links', array(
+Kirki::add_field( 'PickPlugins_social_links', array(
 	'type'        => 'repeater',
 	'label'       => esc_attr__( 'Social Profile Links', 'dart-framework' ),
-	'section'     => 'dartthemes_fw_social',
+	'section'     => 'PickPlugins_social',
 	'priority'    => 10,
 	'row_label' => array(
 		'type' => 'text',
 		'value' => esc_attr__('Social link', 'dart-framework' ),
 	),
-	'settings'    => 'dartthemes_fw_social_links',
-	'default'     => array( dartthemes_fw_social_links()
+	'settings'    => 'PickPlugins_social_links',
+	'default'     => array( PickPlugins_social_links()
 	),
 	'fields' => array(
 		'link_icon' => array(
@@ -79,7 +79,7 @@ Kirki::add_field( 'dartthemes_fw_social_links', array(
 			'label'       => esc_attr__( 'Link Icon', 'dart-framework' ),
 			'description' => esc_attr__( 'This will be the icon for your link', 'dart-framework' ),
 			'default'     => '',
-			//'sanitize_callback' => 'sanitize_dartthemes_fw_social'
+			//'sanitize_callback' => 'sanitize_PickPlugins_social'
 	),
 		'link_url' => array(
 			'type'        => 'link',
