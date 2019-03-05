@@ -13,7 +13,7 @@
 	    <?php PickPlugins_site_wrapper_top(); ?>
 
 	    <?php PickPlugins_site_header_before(); ?>
-        <header class="site-header mb-5 <?php PickPlugins_site_header_class(); ?>">
+        <header class="site-header  <?php PickPlugins_site_header_class(); ?>">
 	        <?php PickPlugins_site_header(); ?>
         </header> <!-- .site-header end -->
         <?php PickPlugins_site_header_after(); ?>

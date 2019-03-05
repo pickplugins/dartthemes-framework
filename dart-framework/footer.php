@@ -1,7 +1,7 @@
 <?php if (!defined('ABSPATH')) exit;  // if direct access ?>
 
             <?php PickPlugins_site_footer_before(); ?>
-            <footer class="site-footer mt-5 <?php PickPlugins_site_footer_class(); ?>">
+            <footer class="site-footer  <?php PickPlugins_site_footer_class(); ?>">
 	            <?php PickPlugins_site_footer(); ?>
             </footer> <!-- .footer end -->
             <?php PickPlugins_site_footer_after(); ?>

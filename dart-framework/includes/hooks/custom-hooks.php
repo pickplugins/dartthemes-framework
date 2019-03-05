@@ -34,11 +34,27 @@ function PickPlugins_site_main_bottom_container(){
 
 
 
+add_action('PickPlugins_site_header_class','PickPlugins_site_header_class_padding');
+
+function PickPlugins_site_header_class_padding($content){
+
+    $content .= 'mb-5';
+
+    return $content;
+
+}
 
 
 
+add_action('PickPlugins_site_footer_class','PickPlugins_site_footer_class_margin');
 
+function PickPlugins_site_footer_class_margin($content){
 
+    $content .= 'mt-5';
+
+    return $content;
+
+}
 
 
 
@@ -278,19 +294,19 @@ function PickPlugins_singular_post_html(){
             </h1>
 
             <div class="entry-meta-top">
-                <div class="author vcard">
+                <span class="author vcard">
                     <?php _e('By: ', 'bug-blog');
                     printf('<a class="url fn n" href="%1$s">%2$s</a>',
                         esc_url(get_author_posts_url(get_the_author_meta('ID'))),
                         esc_html(get_the_author())
                     ) ?>
-                </div>
-                <div class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></div>
+                </span>
+                <span class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></span>
 			    <?php if (get_the_category_list()): ?>
 
-                <div class="categories">
+                <span class="categories">
                 <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
-                </div>
+                </span>
 			    <?php endif; ?>
 
             </div>
@@ -344,7 +360,7 @@ function PickPlugins_archive_loop_post_nav_html(){
 }
 
 
-
+add_action('PickPlugins_content_area_bottom','PickPlugins_archive_loop_post_comments_html');
 add_action('PickPlugins_archive_loop_post','PickPlugins_archive_loop_post_comments_html');
 function PickPlugins_archive_loop_post_comments_html(){
 
@@ -392,19 +408,19 @@ function PickPlugins_content_area_html(){
             </h1>
 
             <div class="entry-meta-top">
-                <div class="author vcard">
+                <span class="author vcard">
                     <?php _e('By: ', 'bug-blog');
                     printf('<a class="url fn n" href="%1$s">%2$s</a>',
                         esc_url(get_author_posts_url(get_the_author_meta('ID'))),
                         esc_html(get_the_author())
                     ) ?>
-                </div>
-                <div class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></div>
+                </span>
+                <span class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></span>
                 <?php if (get_the_category_list()): ?>
 
-                    <div class="categories">
+                    <span class="categories">
                         <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
-                    </div>
+                    </span>
                 <?php endif; ?>
 
             </div>
@@ -440,19 +456,19 @@ function PickPlugins_content_area_html(){
             </h2>
 
             <div class="entry-meta-top">
-                <div class="author vcard">
+                <span class="author vcard">
                     <?php _e('By: ', 'bug-blog');
                     printf('<a class="url fn n" href="%1$s">%2$s</a>',
                         esc_url(get_author_posts_url(get_the_author_meta('ID'))),
                         esc_html(get_the_author())
                     ) ?>
-                </div>
-                <div class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></div>
+                </span>
+                <span class="posted-date"><?php echo sprintf(__('Published: %s','dart-framework'), get_the_time('M d, Y')); ?></span>
                 <?php if (get_the_category_list()): ?>
 
-                    <div class="categories">
+                    <span class="categories">
                         <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
-                    </div>
+                    </span>
                 <?php endif; ?>
 
             </div>
