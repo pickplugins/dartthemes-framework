@@ -1,5 +1,5 @@
 /*
-Theme Name: PickPlugins - 2019
+Theme Name: Dart Framework
 Theme URI: https://dartthemes.com/product/dart-framework
 Author: dartthemeswp
 Author URI:  https://dartthemes.com
@@ -1631,6 +1631,7 @@ ul.menu li:hover > ul,
 
 
 
+
 .commentlist .reply {}
 .commentlist .reply a {}
 
@@ -1672,7 +1673,7 @@ ul.menu li:hover > ul,
 .commentlist li ul.children li.alt {}
 .commentlist li ul.children li.byuser {}
 .commentlist li ul.children li.comment {}
-.commentlist li ul.children li.depth-{id} {}
+/*.commentlist li ul.children li.depth-{id} {}*/
 .commentlist li ul.children li.bypostauthor {}
 .commentlist li ul.children li.comment-author-admin {}
 
@@ -1688,8 +1689,8 @@ ul.menu li:hover > ul,
 #author { }
 #email { }
 #url { }
-#comment
-#submit
+#comment{}
+#submit{}
 .comment-notes { }
 .required { }
 .comment-form-author { }
@@ -1697,7 +1698,7 @@ ul.menu li:hover > ul,
 .comment-form-url { }
 .comment-form-comment { }
 .form-allowed-tags { }
-.form-submit
+.form-submit{}
 
 
 
@@ -1805,6 +1806,7 @@ ul.menu li:hover > ul,
     font-weight: 900;
     src: local('Muli Black'), local('Muli-Black'), url(https://fonts.gstatic.com/s/muli/v12/7Au_p_0qiz-adbHhOCX2zw.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 
 

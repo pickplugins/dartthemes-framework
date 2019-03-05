@@ -286,7 +286,7 @@ function PickPlugins_singular_post_html(){
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <div class="entry-thumbnail">
-			    <?php //the_post_thumbnail(); ?>
+			    <?php the_post_thumbnail(); ?>
             </div>
             <h1 class="title entry-title">
 	            <?php the_title(); ?>
@@ -295,7 +295,7 @@ function PickPlugins_singular_post_html(){
 
             <div class="entry-meta-top">
                 <span class="author vcard">
-                    <?php _e('By: ', 'bug-blog');
+                    <?php _e('By: ', 'dart-framework');
                     printf('<a class="url fn n" href="%1$s">%2$s</a>',
                         esc_url(get_author_posts_url(get_the_author_meta('ID'))),
                         esc_html(get_the_author())
@@ -305,7 +305,7 @@ function PickPlugins_singular_post_html(){
 			    <?php if (get_the_category_list()): ?>
 
                 <span class="categories">
-                <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
+                <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dart-framework')); ?>
                 </span>
 			    <?php endif; ?>
 
@@ -409,7 +409,7 @@ function PickPlugins_content_area_html(){
 
             <div class="entry-meta-top">
                 <span class="author vcard">
-                    <?php _e('By: ', 'bug-blog');
+                    <?php _e('By: ', 'dart-framework');
                     printf('<a class="url fn n" href="%1$s">%2$s</a>',
                         esc_url(get_author_posts_url(get_the_author_meta('ID'))),
                         esc_html(get_the_author())
@@ -419,7 +419,7 @@ function PickPlugins_content_area_html(){
                 <?php if (get_the_category_list()): ?>
 
                     <span class="categories">
-                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
+                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dart-framework')); ?>
                     </span>
                 <?php endif; ?>
 
@@ -457,7 +457,7 @@ function PickPlugins_content_area_html(){
 
             <div class="entry-meta-top">
                 <span class="author vcard">
-                    <?php _e('By: ', 'bug-blog');
+                    <?php _e('By: ', 'dart-framework');
                     printf('<a class="url fn n" href="%1$s">%2$s</a>',
                         esc_url(get_author_posts_url(get_the_author_meta('ID'))),
                         esc_html(get_the_author())
@@ -467,7 +467,7 @@ function PickPlugins_content_area_html(){
                 <?php if (get_the_category_list()): ?>
 
                     <span class="categories">
-                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'bug-blog')); ?>
+                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dart-framework')); ?>
                     </span>
                 <?php endif; ?>
 

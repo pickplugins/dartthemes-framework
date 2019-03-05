@@ -126,38 +126,6 @@ function PickPlugins_register_theme_customizer( $wp_customize ) {
 
 
 	$wp_customize->add_setting(
-		'header_theme',
-		array(
-			'default'     => 'header_1',
-			'sanitize_callback' => 'sanitize_text_field'
-		)
-	);
-
-	$wp_customize->add_control(
-		new WP_Customize_Control(
-			$wp_customize,
-			'header_theme',
-			array(
-				'label'      => __('Header templates', 'dart-framework'),
-				'section'    => 'PickPlugins_header',
-				'settings'   => 'header_theme',
-				'type'		 => 'select',
-				'choices'        => array(
-					'header_1' => __('Theme 1', 'dart-framework'),
-					'header_2' => __('Theme 2', 'dart-framework'),
-					'header_3' => __('Theme 3', 'dart-framework'),
-					'header_4' => __('Theme 4', 'dart-framework'),
-					'header_5' => __('Theme 5', 'dart-framework'),
-					'header_6' => __('Theme 6', 'dart-framework'),
-					'header_7' => __('Theme 7', 'dart-framework'),
-				),
-				'priority'	 => 1
-			)
-		)
-	);
-
-
-	$wp_customize->add_setting(
 		'site_header_bg_color',
 		array(
 			'default'     => '#FFFFFF',
@@ -239,36 +207,6 @@ function PickPlugins_register_theme_customizer( $wp_customize ) {
    		'title'      => __('Footer', 'dart-framework'),
    		'priority'   => 3,
 	) );
-
-
-
-	$wp_customize->add_setting(
-		'footer_theme',
-		array(
-			'default'     => 'footer_1',
-			'sanitize_callback' => 'sanitize_text_field'
-		)
-	);
-
-	$wp_customize->add_control(
-		new WP_Customize_Control(
-			$wp_customize,
-			'footer_theme',
-			array(
-				'label'      => __('Footer templates', 'dart-framework'),
-				'section'    => 'PickPlugins_footer',
-				'settings'   => 'footer_theme',
-				'type'		 => 'select',
-				'choices'        => array(
-					'footer_1' => __('Theme 1', 'dart-framework'),
-					'footer_2' => __('Theme 2', 'dart-framework'),
-					'footer_3' => __('Theme 3', 'dart-framework'),
-				),
-				'priority'	 => 1
-			)
-		)
-	);
-
 
 
 	$wp_customize->add_setting(
@@ -408,41 +346,6 @@ function PickPlugins_register_theme_customizer( $wp_customize ) {
 
 
 
-	/* Article Options*/
-	$wp_customize->add_section( 'PickPlugins_article' , array(
-		'title'      => __('Article', 'dart-framework'),
-		'priority'   => 4,
-	) );
-
-
-	$wp_customize->add_setting(
-		'article_theme',
-		array(
-			'default'     => 'article_1',
-			'sanitize_callback' => 'sanitize_text_field'
-		)
-	);
-
-	$wp_customize->add_control(
-		new WP_Customize_Control(
-			$wp_customize,
-			'article_theme',
-			array(
-				'label'      => __('Article templates', 'dart-framework'),
-				'section'    => 'PickPlugins_article',
-				'settings'   => 'article_theme',
-				'type'		 => 'select',
-				'choices'        => array(
-					'article_1' => __('Theme 1', 'dart-framework'),
-					'article_2' => __('Theme 2', 'dart-framework'),
-					'article_3' => __('Theme 3', 'dart-framework'),
-					'article_4' => __('Theme 4', 'dart-framework'),
-
-				),
-				'priority'	 => 1
-			)
-		)
-	);
 
 
 

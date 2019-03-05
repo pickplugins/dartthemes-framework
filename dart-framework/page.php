@@ -15,6 +15,7 @@ get_header();
 
             <?php PickPlugins_content_area_top(); ?>
             <?php PickPlugins_content_area(); ?>
+            <?php wp_link_pages(); ?>
             <?php PickPlugins_content_area_bottom(); ?>
         </div> <!-- .content-area end -->
 
