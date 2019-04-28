@@ -106,9 +106,15 @@ function dartthemes_article_after(){
 	do_action('dartthemes_article_after');
 }
 
+function dartthemes_entry_meta_top(){
 
+    do_action('dartthemes_entry_meta_top');
+}
 
+function dartthemes_entry_meta_bottom(){
 
+    do_action('dartthemes_entry_meta_bottom');
+}
 
 
 
@@ -132,12 +138,6 @@ function dartthemes_content_area_after(){
 	do_action('dartthemes_content_area_after');
 }
 
-
-
-function dartthemes_archive_loop_post(){
-
-	do_action('dartthemes_archive_loop_post');
-}
 
 
 function dartthemes_content_area_top(){

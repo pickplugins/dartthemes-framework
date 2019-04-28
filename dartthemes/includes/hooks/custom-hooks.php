@@ -298,117 +298,41 @@ function dartthemes_content_area_bottom_pagination(){
 }
 
 
-add_action('dartthemes_archive_loop_post','dartthemes_singular_post_html');
-function dartthemes_singular_post_html(){
-
-    if(is_singular()):
-
-	    ?>
-
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="entry-thumbnail">
-			    <?php the_post_thumbnail(); ?>
-            </div>
-            <h1 class="title entry-title">
-	            <?php the_title(); ?>
-
-            </h1>
-
-            <div class="entry-meta-top">
-                <span class="author vcard">
-                    <?php _e('By: ', 'dartthemes');
-                    printf('<a class="url fn n" href="%1$s">%2$s</a>',
-                        esc_url(get_author_posts_url(get_the_author_meta('ID'))),
-                        esc_html(get_the_author())
-                    ) ?>
-                </span>
-                <span class="posted-date"><?php echo sprintf(__('Published: %s','dartthemes'), get_the_time('M d, Y')); ?></span>
-			    <?php if (get_the_category_list()): ?>
-
-                <span class="categories">
-                <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dartthemes')); ?>
-                </span>
-			    <?php endif; ?>
-
-            </div>
-            <div class="entry-content">
-			    <?php the_content(); ?>
-
-            </div>
-            <div class="clearfix"></div>
-            <div class="entry-meta-bottom">
-                <div class="entry-tags text-left"><?php the_tags(); ?></div>
-            </div>
 
 
 
-        </article>
+add_action('dartthemes_entry_meta_top','dartthemes_post_entry_meta_top');
+function dartthemes_post_entry_meta_top(){
 
-	    <?php
-
-
+    if(is_singular('post') || is_archive() || is_home()):
+    ?>
+    <span class="author vcard">
+        <?php _e('By: ', 'dartthemes');
+        printf('<a class="url fn n" href="%1$s">%2$s</a>',
+            esc_url(get_author_posts_url(get_the_author_meta('ID'))),
+            esc_html(get_the_author())
+        ) ?>
+    </span>
+    <span class="posted-date"><?php echo sprintf(__('Published: %s','dartthemes'), get_the_time('M d, Y')); ?></span>
+    <?php if (get_the_category_list()): ?>
+        <span class="categories">
+            <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dartthemes')); ?>
+        </span>
+    <?php endif;
     endif;
-
 }
 
 
 
+add_action('dartthemes_entry_meta_bottom','dartthemes_post_entry_meta_bottom');
+function dartthemes_post_entry_meta_bottom(){
 
-
-
-
-
-add_action('dartthemes_archive_loop_post','dartthemes_archive_loop_post_nav_html');
-function dartthemes_archive_loop_post_nav_html(){
-
-	if(is_singular()):
-		?>
-        <div class="next-previous-post clearfix">
-            <!-- Previous Post -->
-            <div class="previous-post pull-left">
-				<?php previous_post_link('<div class="nav-previous">%link</div>', __('<i class="fa fa-angle-left"></i> Previous Post', 'dartthemes')); ?>
-            </div>
-
-            <!-- Next Post -->
-            <div class="next-post pull-right text-right">
-				<?php next_post_link('<div class="nav-next">%link</div>', __('Next Post <i class="fa fa-angle-right"></i>', 'dartthemes')); ?>
-            </div>
-        </div>
-		<?php
+    if(is_singular('post')):
+        ?>
+        <div class="entry-tags text-left"><?php the_tags(); ?></div>
+        <?php
     endif;
-
-
 }
-
-
-add_action('dartthemes_content_area_bottom','dartthemes_archive_loop_post_comments_html');
-add_action('dartthemes_archive_loop_post','dartthemes_archive_loop_post_comments_html');
-function dartthemes_archive_loop_post_comments_html(){
-
-	if ( comments_open() || get_comments_number() ) :
-        //comments_template();
-
-    endif;
-
-}
-
-
-
-
-
-
-
-
-
-add_action('dartthemes_archive_loop_post','dartthemes_archive_loop_post_html');
-function dartthemes_archive_loop_post_html(){
-
-
-
-}
-
-
-
 
 
 
@@ -418,44 +342,26 @@ function dartthemes_content_area_html(){
     if(is_singular()):
         while ( have_posts() ) : the_post();
         ?>
-
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <div class="entry-thumbnail">
                 <?php //the_post_thumbnail(); ?>
             </div>
             <h1 class="title entry-title">
                 <?php the_title(); ?>
-
             </h1>
 
             <div class="entry-meta-top">
-                <span class="author vcard">
-                    <?php _e('By: ', 'dartthemes');
-                    printf('<a class="url fn n" href="%1$s">%2$s</a>',
-                        esc_url(get_author_posts_url(get_the_author_meta('ID'))),
-                        esc_html(get_the_author())
-                    ) ?>
-                </span>
-                <span class="posted-date"><?php echo sprintf(__('Published: %s','dartthemes'), get_the_time('M d, Y')); ?></span>
-                <?php if (get_the_category_list()): ?>
-
-                    <span class="categories">
-                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dartthemes')); ?>
-                    </span>
-                <?php endif; ?>
-
+                <?php dartthemes_entry_meta_top(); ?>
             </div>
+
             <div class="entry-content">
                 <?php the_content(); ?>
-
             </div>
+
             <div class="clearfix"></div>
             <div class="entry-meta-bottom">
-                <div class="entry-tags text-left"><?php the_tags(); ?></div>
+                <?php dartthemes_entry_meta_bottom(); ?>
             </div>
-
-
-
         </article>
 
     <?php
@@ -477,31 +383,13 @@ function dartthemes_content_area_html(){
             </h2>
 
             <div class="entry-meta-top">
-                <span class="author vcard">
-                    <?php _e('By: ', 'dartthemes');
-                    printf('<a class="url fn n" href="%1$s">%2$s</a>',
-                        esc_url(get_author_posts_url(get_the_author_meta('ID'))),
-                        esc_html(get_the_author())
-                    ) ?>
-                </span>
-                <span class="posted-date"><?php echo sprintf(__('Published: %s','dartthemes'), get_the_time('M d, Y')); ?></span>
-                <?php if (get_the_category_list()): ?>
-
-                    <span class="categories">
-                        <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dartthemes')); ?>
-                    </span>
-                <?php endif; ?>
-
+                <?php dartthemes_entry_meta_top(); ?>
             </div>
             <div class="entry-content">
                 <?php echo wp_trim_words(get_the_excerpt(), 30, ''); ?>
 
                 <a class="read-more " href="">Read more</a>
             </div>
-
-
-
-
         </article>
 
     <?php

@@ -3,8 +3,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 get_header();
 ?>
-
-
 <?php dartthemes_site_main_before(); ?>
 
     <div class="site-main <?php dartthemes_site_main_class(); ?>">
@@ -22,7 +20,6 @@ get_header();
 
 		<?php dartthemes_site_main_bottom(); ?>
     </div> <!-- .site-main end  -->
-
 
 <?php dartthemes_site_main_after(); ?>
 

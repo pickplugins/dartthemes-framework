@@ -2,8 +2,8 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
 get_header();
-?>
 
+?>
 
 <?php dartthemes_site_main_before(); ?>
 
@@ -29,4 +29,8 @@ get_header();
 <?php dartthemes_site_main_after(); ?>
 
 
-<?php get_footer(); ?>
+<?php
+
+get_footer();
+
+?>

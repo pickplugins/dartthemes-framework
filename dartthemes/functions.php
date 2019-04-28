@@ -34,15 +34,14 @@ function dartthemes_setup(){
     add_theme_support( 'post-thumbnails' );
 
     // This theme uses wp_nav_menu() in one location.
-    register_nav_menus( array(
+    register_nav_menus(
+
+        array(
         'header-menu' => esc_html__( 'Header Menu', 'dartthemes' ),
         'header-top' => esc_html__( 'Header top', 'dartthemes' ),
-
         'header-secondary' => esc_html__( 'Header secondary', 'dartthemes' ),
-
-
-
-    ) );
+    )
+    );
 
     /*
      * Switch default core markup for search form, comment form, and comments
