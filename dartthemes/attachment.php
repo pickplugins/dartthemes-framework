@@ -5,28 +5,28 @@ get_header();
 ?>
 
 
-<?php dartthemes_fw_site_main_before(); ?>
+<?php dartthemes_site_main_before(); ?>
 
-    <div class="site-main <?php dartthemes_fw_site_main_class(); ?>">
-		<?php dartthemes_fw_site_main_top(); ?>
+    <div class="site-main <?php dartthemes_site_main_class(); ?>">
+		<?php dartthemes_site_main_top(); ?>
 
-		<?php dartthemes_fw_content_area_before(); ?>
-        <div class="content-area <?php dartthemes_fw_content_area_class(); ?>">
+		<?php dartthemes_content_area_before(); ?>
+        <div class="content-area <?php dartthemes_content_area_class(); ?>">
 
-			<?php dartthemes_fw_content_area_top(); ?>
+			<?php dartthemes_content_area_top(); ?>
 
-            <?php dartthemes_fw_content_area(); ?>
+            <?php dartthemes_content_area(); ?>
 
-			<?php dartthemes_fw_content_area_bottom(); ?>
+			<?php dartthemes_content_area_bottom(); ?>
         </div> <!-- .content-area end -->
 
-		<?php dartthemes_fw_content_area_after(); ?>
+		<?php dartthemes_content_area_after(); ?>
 
-		<?php dartthemes_fw_site_main_bottom(); ?>
+		<?php dartthemes_site_main_bottom(); ?>
     </div> <!-- .site-main end  -->
 
 
-<?php dartthemes_fw_site_main_after(); ?>
+<?php dartthemes_site_main_after(); ?>
 
 
 <?php get_footer(); ?>

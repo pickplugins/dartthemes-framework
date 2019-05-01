@@ -38,8 +38,8 @@ function dartthemes_setup(){
 
         array(
         'header-menu' => esc_html__( 'Header Menu', 'dartthemes' ),
-        'header-top' => esc_html__( 'Header top', 'dartthemes' ),
-        'header-secondary' => esc_html__( 'Header secondary', 'dartthemes' ),
+        //'header-top' => esc_html__( 'Header top', 'dartthemes' ),
+        //'header-secondary' => esc_html__( 'Header secondary', 'dartthemes' ),
     )
     );
 
@@ -63,7 +63,9 @@ function dartthemes_setup(){
 
 
     add_theme_support( 'woocommerce' );
-
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
 }
 
 add_action( 'after_setup_theme', 'dartthemes_setup' );
@@ -78,11 +80,18 @@ add_action( 'admin_init', 'dartthemes_add_editor_styles' );
 function dartthemes_front_scripts() {
 
 	// CSS File
-	wp_enqueue_style('bootstrap.min', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '3.3.6', 'all');
-	wp_enqueue_style('fontawesome.min', get_template_directory_uri() . '/assets/css/fontawesome.min.css', array(), '4.4.0', 'all');
+    wp_enqueue_style('bootstrap.min', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '3.3.6', 'all');
+    wp_enqueue_style('default', get_template_directory_uri() . '/assets/css/default.css', array(), NULL);
+
+    wp_enqueue_style('fontawesome.min', get_template_directory_uri() . '/assets/css/fontawesome.min.css', array(), '4.4.0', 'all');
 	wp_enqueue_style('slicknav.min', get_template_directory_uri() . '/assets/css/slicknav.min.css', array(), NULL);
 
+
 	wp_enqueue_style( 'dartthemes-stylesheet', get_stylesheet_uri() );
+
+
+
+
 
 	// Google Fonts
 	//wp_enqueue_style( 'Muli', 'https://fonts.googleapis.com/css?family=Muli:400,700,800,900', array(), NULL );
@@ -124,6 +133,7 @@ function dartthemes_admin_enqueue_scripts() {
 	// CSS File
 	wp_enqueue_style('admin-css', get_template_directory_uri() . '/assets/admin/css/style.css', array(), '4.4.0', 'all');
 	wp_enqueue_style('font-awesome-css', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.4.0', 'all');
+    wp_enqueue_style('style-editor', get_template_directory_uri() . '/assets/css/style-editor.css', array(), '4.4.0', 'all');
 
 
 	// JS Files

@@ -15,7 +15,6 @@ get_header();
 
             <?php dartthemes_content_area_top(); ?>
             <?php dartthemes_content_area(); ?>
-            <?php wp_link_pages(); ?>
             <?php dartthemes_content_area_bottom(); ?>
         </div> <!-- .content-area end -->
 

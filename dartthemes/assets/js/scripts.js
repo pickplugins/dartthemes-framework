@@ -24,15 +24,15 @@
 
 
 /* === Menu === */
-    //$('.menu').slicknav('toggle');
+    $('.menu').slicknav('toggle');
 
 
-    (function () {
-    $('.menu').slicknav({
-      prependTo:'.menu-mobile',
-      label:''
-    })
-  }());
+  //   (function () {
+  //   $('.menu').slicknav({
+  //     prependTo:'.menu-mobile',
+  //     label:''
+  //   })
+  // }());
 
 
 

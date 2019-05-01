@@ -1,4 +1,4 @@
-=== Bug blog ===
+=== Dartthemes ===
 Contributors: dartthemeswp
 Tags: one-column, two-columns, right-sidebar, fluid-layout, custom-menu, featured-images, post-formats, threaded-comments, translation-ready, theme-options, full-width-template, responsive-layout
 Requires at least: 4.0

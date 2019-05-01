@@ -59,7 +59,7 @@ add_action('dartthemes_site_header_class','dartthemes_site_header_class_padding'
 
 function dartthemes_site_header_class_padding($content){
 
-    $content .= 'mb-5';
+    $content .= '';
 
     return $content;
 
@@ -67,11 +67,11 @@ function dartthemes_site_header_class_padding($content){
 
 
 
-add_action('dartthemes_site_footer_class','dartthemes_site_footer_class_margin');
+add_action('dartthemes_site_main_class','dartthemes_site_main_class_margin');
 
-function dartthemes_site_footer_class_margin($content){
+function dartthemes_site_main_class_margin($content){
 
-    $content .= 'mt-5';
+    $content .= 'py-5';
 
     return $content;
 
@@ -93,23 +93,30 @@ function dartthemes_site_footer_class_margin($content){
 add_action('dartthemes_content_area_top','dartthemes_arcive_title');
 function dartthemes_arcive_title(){
 
+
 	if(is_category() || is_tag() || is_author() || is_year() || is_month() || is_day() || is_tax() || is_post_type_archive()):
+
+        $the_archive_description = the_archive_description();
+
 		?>
-        <div class="archive-header">
-            <h4 class="archive-title">
+        <div class="archive-header mb-4">
+            <h4 class="archive-title mb-0">
 				<?php
 				the_archive_title();
 				?>
             </h4>
+
+            <?php if(!empty($the_archive_description)): ?>
             <p class="archive-description"><?php echo the_archive_description(); ?></p>
+            <?php endif; ?>
         </div>
 
 		<?php
     elseif (is_search()):
 		?>
-        <div class="archive-header">
+        <div class="archive-header mb-4">
 
-            <h4 class="archive-title">
+            <h4 class="archive-title mb-0">
 				<?php printf( __( 'Search Results: <strong>%s</strong>', 'dartthemes' ),'<span>' . get_search_query() . '</span>' ); ?>
             </h4>
         </div>
@@ -155,7 +162,7 @@ function dartthemes_site_header_html(){
                 else:
                     ?>
                     <div class="main-logo">
-                        <h1><a href="<?php echo esc_url(home_url()); ?>"><?php echo esc_attr(get_bloginfo('name')); ?></a></h1>
+                        <h1 class="m-0"><a href="<?php echo esc_url(home_url()); ?>"><?php echo esc_attr(get_bloginfo('name')); ?></a></h1>
                     </div><!-- /Logo -->
                 <?php
 
@@ -186,17 +193,8 @@ function dartthemes_site_footer_html(){
     ?>
 
 
-    <div class="container">
-        <div class="row">
-
-            <?php dynamic_sidebar('footer-widget'); ?>
-
-
-        </div>
-    </div>
 
     <div class="footer-bottom">
-
         <div class="container">
             <div class="row">
 
@@ -216,10 +214,10 @@ function dartthemes_site_footer_html(){
                     endif;
                     ?>
 
-                    <?php if(empty($dartthemes_dev_by)):?>
-                        <span class="dev-credit"><?php echo sprintf(__('Theme <b>Dart framework</b> by <a href="%s">%s</a>','dartthemes'),'https://dartthemes.com','https://dartthemes.com'); ?>  </span> |
+                    <?php //if(empty($dartthemes_dev_by)):?>
+                        <span class="dev-credit"><?php echo sprintf(__('Theme by <a href="%s"><b>DartThemes</b></a>','dartthemes'),'https://dartthemes.com'); ?>  </span> |
                     <?php
-                    endif;
+                    //endif;
                     ?>
 
 
@@ -253,44 +251,49 @@ function dartthemes_content_area_bottom_pagination(){
 
 	if(!is_singular()):
 
+        if ( get_query_var('paged') ) {
 
-		?>
-        <div class="pagination">
-			<?php
+            $paged = get_query_var('paged');
 
-			if ( get_query_var('paged') ) {
+        } elseif ( get_query_var('page') ) {
 
-				$paged = get_query_var('paged');
+            $paged = get_query_var('page');
 
-			} elseif ( get_query_var('page') ) {
+        } else {
 
-				$paged = get_query_var('page');
+            $paged = 1;
 
-			} else {
+        }
 
-				$paged = 1;
+        global $wp_query;
 
-			}
+        $big = 999999999; // need an unlikely integer
+        $max_num_pages = $wp_query->max_num_pages;
 
-			global $wp_query;
+        $links = paginate_links( array(
+            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+            'format' => '?paged=%#%',
+            'current' => max( 1, $paged ),
+            'total' => $max_num_pages,
+            'prev_text'          => __('Previous','dartthemes'),
+            'next_text'          => __('Next','dartthemes'),
+        ) );
 
-			$big = 999999999; // need an unlikely integer
-			$max_num_pages = $wp_query->max_num_pages;
 
 
-			echo paginate_links( array(
-				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-				'format' => '?paged=%#%',
-				'current' => max( 1, $paged ),
-				'total' => $max_num_pages,
-				'prev_text'          => __('Previous','dartthemes'),
-				'next_text'          => __('Next','dartthemes'),
-			) );
+        if(!empty($links)):
+            ?>
+            <div class="pagination justify-content-center">
+                <?php
 
-			?>
+                echo $links;
+                
+                ?>
 
-        </div>
-		<?php
+            </div>
+        <?php
+        endif;
+
 
 	endif;
 
@@ -316,7 +319,7 @@ function dartthemes_post_entry_meta_top(){
     <span class="posted-date"><?php echo sprintf(__('Published: %s','dartthemes'), get_the_time('M d, Y')); ?></span>
     <?php if (get_the_category_list()): ?>
         <span class="categories">
-            <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dartthemes')); ?>
+            Categories: <?php echo get_the_category_list(_x(', ', 'Used between list items, there is a space after the comma.', 'dartthemes')); ?>
         </span>
     <?php endif;
     endif;
@@ -343,10 +346,14 @@ function dartthemes_content_area_html(){
         while ( have_posts() ) : the_post();
         ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="entry-thumbnail">
-                <?php //the_post_thumbnail(); ?>
+
+            <?php if ( has_post_thumbnail() ): ?>
+            <div class="entry-thumbnail mb-3">
+                <?php the_post_thumbnail(); ?>
             </div>
-            <h1 class="title entry-title">
+            <?php endif; ?>
+
+            <h1 class="title entry-title mt-0">
                 <?php the_title(); ?>
             </h1>
 
@@ -369,31 +376,51 @@ function dartthemes_content_area_html(){
         endwhile;
     endif;
 
-    if(is_archive() || is_home()):
+    if(is_archive() || is_home() || is_search()):
+        ?>
+        <div class="row">
+        <?php
+
+
         while ( have_posts() ) : the_post();
         ?>
 
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="entry-thumbnail">
-                <?php //the_post_thumbnail(); ?>
-            </div>
-            <h2 class="title entry-title">
-                <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
+        <div class="col-6">
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-            </h2>
 
-            <div class="entry-meta-top">
-                <?php dartthemes_entry_meta_top(); ?>
-            </div>
-            <div class="entry-content">
-                <?php echo wp_trim_words(get_the_excerpt(), 30, ''); ?>
+                <?php if ( has_post_thumbnail() ): ?>
+                <div class="entry-thumbnail mb-3">
+                    <?php the_post_thumbnail(); ?>
+                </div>
+                <?php endif; ?>
 
-                <a class="read-more " href="">Read more</a>
-            </div>
-        </article>
+
+                <h4 class="title entry-title mt-0">
+                    <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
+
+                </h4>
+                <div class="entry-content">
+                    <?php echo wp_trim_words(get_the_excerpt(), 30, ''); ?>
+
+                    <a class="read-more " href="<?php echo get_permalink(); ?>"><?php echo __( 'Read more', 'dartthemes' ); ?></a>
+                </div>
+
+                <div class="entry-meta-top">
+                    <?php dartthemes_entry_meta_top(); ?>
+                </div>
+
+            </article>
+        </div>
+
 
     <?php
         endwhile;
+
+        ?>
+        </div>
+    <?php
+
 
     endif;
 
@@ -402,6 +429,95 @@ function dartthemes_content_area_html(){
 
 
 
+add_action('dartthemes_content_area','dartthemes_content_area_post_links');
+
+function dartthemes_content_area_post_links(){
+
+    if(is_singular()):
+
+        wp_link_pages( array(
+            'before' => '<div class="page-links mb-5 text-center">' . esc_html__( 'Pages:', 'dartthemes' ),
+            'after'  => '</div>',
+        ) );
 
 
+    endif;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('dartthemes_content_area','dartthemes_content_area_post_nav');
+
+function dartthemes_content_area_post_nav(){
+
+    if(is_singular('post')):
+        ?>
+
+        <div class="post-navs mb-5">
+            <div class="row">
+                <div class="col-6">
+
+                    <div class="previous-post ">
+                        <?php previous_post_link('<div class="nav-previous p-3">%link</div>', __('<i class="fa fa-angle-left"></i> Previous Post', 'dartthemes')); ?>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="next-post  text-right">
+                        <?php next_post_link('<div class="nav-next p-3">%link</div>', __('Next Post <i class="fa fa-angle-right"></i>', 'dartthemes')); ?>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    <?php
+    endif;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('dartthemes_content_area','dartthemes_content_area_comment');
+function dartthemes_content_area_comment(){
+    if(is_singular()):
+
+        if ( comments_open() || get_comments_number() ) :
+            ?>
+            <div class="comments-wrap p-3">
+            <?php
+
+            comments_template();
+            ?>
+            </div>
+        <?php
+        endif;
+
+
+    endif;
+}
 
